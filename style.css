@@ -15,14 +15,14 @@ html, body {
 }
 #rb {
 
-  background-image: url('images/rb.png');
+  background-image: url('images/buttons/rb.png');
   border: none;
   outline: none;
 }
 
 #lb {
 
-  background-image: url('images/lb.png');
+  background-image: url('images/buttons/lb.png');
   border: none;
   outline: none;
 }

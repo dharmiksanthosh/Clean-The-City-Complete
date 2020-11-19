@@ -1,6 +1,6 @@
 var bg,bgimg,cleaner,boyimg,ob1,ob2,ob3,ob4,ob5,ob6,ob7,ob8,ob9,score,hdustbin,wdustbin,rdustbin;
 var wgroup,hgroup,gamestate,state2,form,check,pb,pbimg,ibimg,ib,clb,col,count,ctxt,orent,ort,dev;
-var mcount,clok,state3,sth4,stw4,str4,lb,rb,lbp = false,rbp = false,re,reimg;
+var mcount,clok,state3,sth4,stw4,str4,lb,rb,lbp = false,rbp = false,re,reimg,touches = [];
 
 function preload(){
 
@@ -78,35 +78,14 @@ function setup() {
 
 function draw() {
 
-  ib.mousePressed(()=>{
+  ib.mousePressed(start);
+  Touching(ib,start);
 
-    background(ints);
+  clb.mousePressed(close);
+  Touching(clb,close);
 
-
-    pb.hide();
-    pbimg.hide();
-    ib.hide();
-    ibimg.hide();
-
-    clb.show();
-  })
-
-  clb.mousePressed(()=>{
-
-    background(bgs);
-
-    pb.show();
-    pbimg.show();
-    ib.show();
-    ibimg.show();
-
-    clb.hide();
-  });
-
-  pb.mousePressed(()=>{
-
-    state2 = 1;
-  }) 
+  pb.mousePressed(start);
+  Touching(pb,start);
 
   if (windowWidth < windowHeight) {
     
@@ -125,9 +104,6 @@ function draw() {
   }
 
   if (state2 === 1) {
-    
-    //startSound.stop();
-    //playSound.play();
 
     pb.hide();
     pbimg.hide();
@@ -170,20 +146,18 @@ function draw() {
     gamestate = "play";
     form = new Form();
 
-    if (dev == 'mobile'){
+    rb = createButton('');
+    rb.position(width-100,height/3);
+    rb.style('background-color', col);
+    rb.size(72,height/3-8);
+    rb.id('rb');
 
-      rb = createButton('');
-      rb.position(width-100,height/3);
-      rb.style('background-color', col);
-      rb.size(72,height/3-8);
-      rb.id('rb');
+    lb = createButton('');
+    lb.position(0,height/3);
+    lb.style('background-color', col);
+    lb.size(72,height/3-8);
+    lb.id('lb');
 
-      lb = createButton('');
-      lb.position(0,height/3);
-      lb.style('background-color', col);
-      lb.size(72,height/3-8);
-      lb.id('lb');
-    }
     reimg = createImg('images/buttons/restart.png');
     reimg.position(0,100);
 
@@ -234,39 +208,36 @@ function draw() {
       mcount --;
     }
 
-    if (dev == 'mobile'){
+    rb.show();
+    lb.show();
 
-      rb.show();
-      lb.show();
-    }
     //Moving the Cleaner-Player(PC)
-    if (dev == 'mobile'){
 
-      rb.mousePressed(()=>{
+    rb.mousePressed(()=>{
 
-        rbp = true;
-      })
-      lb.mousePressed(()=>{
+      rbp = true;
+    })
+    lb.mousePressed(()=>{
 
-        lbp = true;
-      })
+      lbp = true;
+    })
 
-      rb.mouseReleased(()=>{
+    rb.mouseReleased(()=>{
 
-        rbp = false;
-      })
-      lb.mouseReleased(()=>{
+      rbp = false;
+    })
+    lb.mouseReleased(()=>{
 
-        lbp = false;
-      })
-    }
+      lbp = false;
+    })
+
     if ((keyDown("right")||keyDown("d")||rbp == true)&&cleaner.x<1220) {
     
       mover();
     }
     if ((keyDown("left")||keyDown("a")||lbp == true)&&cleaner.x>350) {
     
-      movel()
+      movel();
     }
 
     if (rgroup.isTouching(cleaner)) {
@@ -275,35 +246,26 @@ function draw() {
 
       check = "r";
 
-      if (dev == 'mobile'){
-
         rbp = false;
         lbp = false;
       }
-    }
     if (wgroup.isTouching(cleaner)) {
       
       gamestate = "pause";
 
       check = "w";
 
-      if (dev == 'mobile'){
-
-        rbp = false;
-        lbp = false;
-      }
+      rbp = false;
+      lbp = false;
     }
     if (hgroup.isTouching(cleaner)) {
       
       gamestate = "pause";
 
       check = "h";
-      
-      if (dev == 'mobile'){
 
-        rbp = false;
-        lbp = false;
-      }
+      rbp = false;
+      lbp = false;
     }
 
     spawngarbage();
@@ -333,7 +295,8 @@ function draw() {
   }
   if (re!=undefined) {
     
-   re.mousePressed(()=>{reset()});
+   re.mousePressed(reset);
+   Touching(re,reset);
   }
 }
 
@@ -367,7 +330,6 @@ function spawngarbageR(){
      rgroup.add(obstacleR);
      obstacleR.lifetime = height;
 }
-
 function spawngarbageW(){
 
  
@@ -449,11 +411,8 @@ function ask(){
   form.show();
   form.display();
 
-  if (dev == 'mobile'){
-
     rb.hide();
     lb.hide();
-  }
 
   if (check === "h") {
    
@@ -562,11 +521,8 @@ function gend(){
   re.show();
   reimg.show();
 
-  if (dev == 'mobile'){
-
     rb.hide();
     lb.hide();
-  }
 }
 function bend(){
 
@@ -579,12 +535,10 @@ function bend(){
   background(bgeb);
   re.show();
   reimg.show();
-  
-  if (dev == 'mobile'){
+
 
     rb.hide();
     lb.hide();
-  }
 }
 function mover() {
   
@@ -597,4 +551,42 @@ function movel() {
 function reset() {
   
   window.location.reload();
+}
+function start(){
+  
+  state2 = 1;
+}
+function info(){
+
+  background(ints);
+
+  pb.hide();
+  pbimg.hide();
+  ib.hide();
+  ibimg.hide();
+
+  clb.show();
+}
+function close(){
+  
+  background(bgs);
+
+  pb.show();
+  pbimg.show();
+  ib.show();
+  ibimg.show();
+
+  clb.hide();
+}
+function Touching(b,fun){
+
+  if (touches == [0]) {
+
+    if (touches[0].x < b.position().x + (b.position().width/2) && touches[0].x > b.position().x - (b.position().width/2) && (touches[0].y < b.position().y + (b.position().height/2) && touches[0].y > b.position().y - (b.position().height/2))){
+
+      touches = []
+      fun();
+    }
+    touches = []
+  }
 }
