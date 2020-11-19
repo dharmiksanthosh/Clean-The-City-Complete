@@ -30,8 +30,8 @@ function preload(){
   wdust = loadImage("images/bins/wet.png");
   rdust = loadImage("images/bins/recyle.png");
 
-  startSound = loadSound("music/start.mp3");
-  playSound = loadSound("music/play.mp3");
+  //startSound = loadSound("music/start.mp3");
+  //playSound = loadSound("music/play.mp3");
 }
 
 function setup() {
@@ -85,7 +85,7 @@ function draw() {
 
     background(ints);
 
-    startSound.play();
+    //startSound.play();
 
     pb.hide();
     pbimg.hide();
@@ -130,8 +130,8 @@ function draw() {
 
   if (state2 === 1) {
     
-    startSound.stop();
-    playSound.play();
+    //startSound.stop();
+    //playSound.play();
 
     pb.hide();
     pbimg.hide();
@@ -309,7 +309,7 @@ function draw() {
         lbp = false;
       }
     }
-    playSound.loop;
+    //playSound.loop;
 
     spawngarbage();
   }
@@ -575,8 +575,8 @@ function gend(){
 
   if (state3 == 1) {
     
-    playSound.stop();
-    startSound.play();
+    //playSound.stop();
+    //startSound.play();
 
     state3 = 0;
   }
@@ -590,7 +590,7 @@ function bend(){
   cleaner.changeAnimation('stop');
   bg.destroy();
   cleaner.destroy();
-  playSound.stop();
+  //playSound.stop();
   background(bgeb);
   re.show();
   reimg.show();
