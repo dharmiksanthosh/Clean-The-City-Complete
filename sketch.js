@@ -78,8 +78,8 @@ function setup() {
 
 function draw() {
 
-  ib.mousePressed(start);
-  Touching(ib,start);
+  ib.mousePressed(info);
+  Touching(ib,info);
 
   clb.mousePressed(close);
   Touching(clb,close);
@@ -566,6 +566,7 @@ function info(){
   ibimg.hide();
 
   clb.show();
+  ibimg.show();
 }
 function close(){
   
