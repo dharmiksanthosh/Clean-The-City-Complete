@@ -1,0 +1,32 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+#rbutton {
+
+  border: none;
+  border-radius: 100%;
+  outline: none;
+}
+#ibutton {
+
+  border: none;
+  outline: none;
+}
+#rb {
+
+  background-image: url('images/rb.png');
+  border: none;
+  outline: none;
+}
+
+#lb {
+
+  background-image: url('images/lb.png');
+  border: none;
+  outline: none;
+}
+
+canvas {
+  display: block;
+}
