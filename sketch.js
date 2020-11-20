@@ -96,7 +96,7 @@ function draw() {
     orent = 'landscape';
   }
 
-  if (orent == 'portrait' && state2 == 0 && dev == 'pc') {
+  if (orent == 'portrait' && state2 == 0 && dev == 'mobile') {
     
     ort = createImg("images/forms/unlock.png");
     ort.position(0,0);
