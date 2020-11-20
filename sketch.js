@@ -96,12 +96,13 @@ function draw() {
     orent = 'landscape';
   }
 
-  if (orent == 'portrait' && state2 == 0 && dev == 'mobile') {
+  if (orent == 'portrait' && state2 == 0 && dev == 'pc') {
     
-    ort = createImg("images/form/unlock.png");
+    ort = createImg("images/forms/unlock.png");
     ort.position(0,0);
     ort.size(width,height);
   }
+  console.log(orent,state2,dev)
 
   if (state2 === 1) {
 
