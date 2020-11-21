@@ -1,6 +1,6 @@
 var bg,bgimg,cleaner,boyimg,ob1,ob2,ob3,ob4,ob5,ob6,ob7,ob8,ob9,score,hdustbin,wdustbin,rdustbin;
 var wgroup,hgroup,gamestate,state2,form,check,pb,pbimg,ibimg,ib,clb,col,count,ctxt,orent,ort,dev;
-var mcount,clok,state3,sth4,stw4,str4,lb,rb,lbp = false,rbp = false,re,reimg,touches = [];
+var mcount,clok,state3,sth4,stw4,str4,lb,rb,lbp = false,rbp = false,re,reimg,touches = [],bs;
 
 function preload(){
 
@@ -102,7 +102,6 @@ function draw() {
     ort.position(0,0);
     ort.size(width,height);
   }
-  console.log(orent,state2,dev)
 
   if (state2 === 1) {
 
@@ -113,9 +112,11 @@ function draw() {
 
     bg = createSprite(width/2,-50,width,height);
     bg.addImage(bgp);
-    bg.scale = 1.29;
 
-    cleaner = createSprite(width*0.6,580);
+    bs = 1.29
+    bg.scale = bs;
+
+    cleaner = createSprite(width*0.6,height/3*2);
     cleaner.addAnimation("boyim",boyimg);
     cleaner.addImage("stop",boystopimg);
     cleaner.scale = 0.5;
