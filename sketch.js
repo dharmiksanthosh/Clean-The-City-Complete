@@ -1,6 +1,6 @@
 var bg,bgimg,cleaner,boyimg,ob1,ob2,ob3,ob4,ob5,ob6,ob7,ob8,ob9,score,hdustbin,wdustbin,rdustbin;
 var wgroup,hgroup,gamestate,state2,form,check,pb,pbimg,ibimg,ib,clb,col,count,ctxt,orent,ort,dev;
-var mcount,clok,state3,sth4,stw4,str4,lb,rb,lbp = false,rbp = false,re,reimg,touches = [],bs;
+var mcount,clok,state3,sth4,stw4,str4,lb,rb,lbp = false,rbp = false,re,reimg,touches = [];
 
 function preload(){
 
@@ -112,9 +112,7 @@ function draw() {
 
     bg = createSprite(width/2,-50,width,height);
     bg.addImage(bgp);
-
-    bs = 1.29
-    bg.scale = bs;
+    bg.scale = 1.3;
 
     cleaner = createSprite(width*0.6,height/3*2);
     cleaner.addAnimation("boyim",boyimg);
